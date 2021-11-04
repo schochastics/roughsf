@@ -42,7 +42,7 @@ function drawText(rc,ctx,s) {
     ctx.textBaseline = "middle";
     ctx.fillText(s.label,Number(s.x)+0.5 * Number(s.size), Number(s.y));
   }
-    if(s.pos==="w"){
+  if(s.pos==="w"){
     ctx.textAlign = "right";
     ctx.textBaseline = "middle";
     ctx.fillText(s.label,Number(s.x)-0.5 * Number(s.size), Number(s.y));
@@ -93,6 +93,8 @@ HTMLWidgets.widget({
         var ctx = c.getContext("2d");
         ctx.font = x.font;
 
+        //draw boarder
+        //rc.rectangle (0, 0, width, height,{strokeWidth:2,roughness:3});
         x.data.map(function(s) {
           if(s.shape === "POLYGON"){
             drawPoly(rc, s);
@@ -111,6 +113,12 @@ HTMLWidgets.widget({
 
           if(s.shape === "TITLE"){
             ctx.font = x.title_font;
+            drawText(rc,ctx,s);
+            ctx.font = x.font;
+          }
+
+          if(s.shape === "CAPTION"){
+            ctx.font = x.caption_font;
             drawText(rc,ctx,s);
             ctx.font = x.font;
           }

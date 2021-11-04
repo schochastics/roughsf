@@ -12,6 +12,8 @@ roughsf(
   font = "30px Arial",
   title = NULL,
   title_font = "30px Arial",
+  caption = NULL,
+  caption_font = "30px Arial",
   width = NULL,
   height = NULL,
   elementId = NULL,
@@ -30,6 +32,12 @@ roughsf(
 \item{font}{font size and font family for labels}
 
 \item{title}{optional title of the map}
+
+\item{title_font}{font size and font family for title}
+
+\item{caption}{optional caption of the map}
+
+\item{caption_font}{font size and font family for caption}
 
 \item{width}{width}
 

@@ -6,6 +6,9 @@
 #' @param simplification simplify drawings (remove points from objects)
 #' @param font font size and font family for labels
 #' @param title optional title of the map
+#' @param title_font font size and font family for title
+#' @param caption optional caption of the map
+#' @param caption_font font size and font family for caption
 #' @param width width
 #' @param height height
 #' @param elementId DOM id
@@ -37,8 +40,8 @@
 roughsf <- function(layers,
                     roughness = 1, bowing = 1, simplification = 1,
                     font = "30px Arial",
-                    title = NULL,
-                    title_font = "30px Arial",
+                    title = NULL, title_font = "30px Arial",
+                    caption = NULL, caption_font="30px Arial",
                     width = NULL, height = NULL, elementId = NULL,chunk_name = "canvas") {
 
   if("sf"%in%class(layers)){
@@ -93,6 +96,12 @@ roughsf <- function(layers,
                            fill="",fillstyle="",size=NA,fillweight="",label=title,pos="c")
     rough_df <- rbind(rough_df,title_df)
   }
+
+  if(!is.null(caption)){
+    caption_df <- data.frame(xy="",x=width/2,y=height*.95,shape="CAPTION",color="black",
+                           fill="",fillstyle="",size=NA,fillweight="",label=caption,pos="c")
+    rough_df <- rbind(rough_df,caption_df)
+  }
   rough_df$roughness <- roughness
   rough_df$bowing <- bowing
   rough_df$simplification <- simplification
@@ -101,6 +110,7 @@ roughsf <- function(layers,
     data=jsonlite::toJSON(rough_df),
     font=font,
     title_font=title_font,
+    caption_font=caption_font,
     id=chunk_name
   )
 
