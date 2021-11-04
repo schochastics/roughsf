@@ -6,6 +6,7 @@
 \usage{
 roughsf(
   object,
+  title = NULL,
   roughness = 1,
   bowing = 1,
   simplification = 1,
@@ -18,6 +19,8 @@ roughsf(
 }
 \arguments{
 \item{object}{sf object}
+
+\item{title}{optional title of the map}
 
 \item{roughness}{numeric vector for roughness of lines}
 
@@ -44,7 +47,7 @@ the function recognizes the following attributes:
 \item \emph{fill} shape fill color
 \item \emph{color} shape stroke color
 \item \emph{stroke} stroke size
-\item \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "sunburst", "dashed", "zigzag-line"
+\item \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
 \item \emph{label} label (not implemented yet)
 }
 

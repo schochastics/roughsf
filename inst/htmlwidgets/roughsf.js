@@ -1,4 +1,4 @@
-function drawPoly(rc,ctx, s) {
+function drawPoly(rc, s) {
   rc.path(s.xy, {
      roughness: s.roughness,
      bowing: s.bowing,
@@ -10,7 +10,28 @@ function drawPoly(rc,ctx, s) {
      stroke: s.color,
      strokeWidth: s.width
    });
-//   rc.path('M80 80 A 45 45, 0, 0, 0, 125 125 L 125 80 Z', { fill: 'green' });
+}
+
+function drawPoint(rc, s) {
+   rc.circle(Number(s.x), Number(s.y), Number(s.size), {
+     roughness: s.roughness,
+     bowing: s.bowing,
+     fill: s.fill,
+     fillStyle: s.fillstyle,
+     hachureGap: 4,
+     fillWeight: 0.5,
+     stroke: s.color,
+     strokeWidth: s.width
+   });
+}
+
+function drawLine(rc, s) {
+  rc.path(s.xy, {
+     roughness: s.roughness,
+     bowing: s.bowing,
+     stroke: s.color,
+     strokeWidth: s.width
+   });
 }
 
 function drawText(rc,ctx,s) {
@@ -47,11 +68,25 @@ HTMLWidgets.widget({
         ctx.font = x.font;
 
         x.data.map(function(s) {
-          if(s.shape === "polygon"){
-            drawPoly(rc,ctx,s);
+          if(s.shape === "POLYGON"){
+            drawPoly(rc, s);
           }
-          if(s.shape === "text"){
+          if(s.shape === "LINESTRING"){
+            drawLine(rc, s);
+          }
+
+          if(s.shape === "POINT"){
+            drawPoint(rc,s);
+          }
+
+          if(s.shape === "TEXT"){
             drawText(rc,ctx,s);
+          }
+
+          if(s.shape === "TITLE"){
+            ctx.font = x.title_font;
+            drawText(rc,ctx,s);
+            ctx.font = x.font;
           }
 
         });

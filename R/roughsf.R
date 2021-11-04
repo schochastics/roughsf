@@ -1,11 +1,11 @@
 #' Create a rough map
 #' @description plot a sf map using rough.js
 #' @param object sf object
-#' @param title optional title of the map
 #' @param roughness numeric vector for roughness of lines
 #' @param bowing numeric vector for bowing of lines
 #' @param simplification simplify drawings (remove points from objects)
 #' @param font font size and font family for labels
+#' @param title optional title of the map
 #' @param width width
 #' @param height height
 #' @param elementId DOM id
@@ -15,7 +15,7 @@
 #' * \emph{fill} shape fill color
 #' * \emph{color} shape stroke color
 #' * \emph{stroke} stroke size
-#' * \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "sunburst", "dashed", "zigzag-line"
+#' * \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
 #' * \emph{label} label (not implemented yet)
 #'
 #' Default values are used if one of the attributes is not found.
@@ -24,8 +24,12 @@
 #'
 #' More details on roughjs can be found on https://github.com/rough-stuff/rough/wiki
 #' @export
-roughsf <- function(object,title=NULL,roughness = 1, bowing = 1, simplification = 1,font = "30px Arial",
-                     width = NULL, height = NULL, elementId = NULL,chunk_name = "canvas") {
+roughsf <- function(object,
+                    roughness = 1, bowing = 1, simplification = 1,
+                    font = "30px Arial",
+                    title = NULL,
+                    title_font = "30px Arial",
+                    width = NULL, height = NULL, elementId = NULL,chunk_name = "canvas") {
 
   # prepare styles ----
   if(!"fill" %in% names(object)){
@@ -51,7 +55,11 @@ roughsf <- function(object,title=NULL,roughness = 1, bowing = 1, simplification 
     vfillstyle <- object[["fillstyle"]]
   }
 
+  #prepare data----
   types <- sf::st_geometry_type(object)
+  if(any(types=="MULTIPOLYGON" | types=="MULTILINESTRING")){
+    stop("MULTIPOLYGONS and MULTILINESTRINGS are not supported. Use `sf::st_cast()` first.")
+  }
   coords <- sf::st_coordinates(object)
   if(is.null(width)){
     width <- 800
@@ -65,22 +73,25 @@ roughsf <- function(object,title=NULL,roughness = 1, bowing = 1, simplification 
   } else{
     coords[,2] <- normalise(coords[,2], to = c(height*0.9,height*0.1))
   }
-  nobj <- max(coords[,4])
+  nobj <- nrow(object)#max(coords[,4])
+  mobj <- ncol(coords)
   path_string <- rep("",nobj)
+  coords_list <- split(coords[,1:2],coords[,mobj])
+
   for(i in 1:nobj){
-    idx <- coords[,4]==i
-    xy <- coords[idx,1:2]
+    xy <- matrix(coords_list[[i]],ncol=2)
     path_string[i] <- paste0("M ",paste0(apply(xy,1,paste0,collapse=" "),collapse=" L "))
     if(types[i]=="POLYGON"){
       path_string[i] <- paste0(path_string[i]," z")
     }
-
   }
-  nodes <- data.frame(
+
+  #prepare final data
+  rough_df <- data.frame(
     xy  = path_string,
     x = 0,
     y = 0,
-    shape="polygon",
+    shape=as.character(types),
     color = vcol,
     fill  = vfill,
     fillstyle = vfillstyle,
@@ -88,16 +99,17 @@ roughsf <- function(object,title=NULL,roughness = 1, bowing = 1, simplification 
     label="")
 
   if(!is.null(title)){
-    title_df <- data.frame(xy="",x=width/2,y=50,shape="text",color="black",fill="",fillstyle="",width=0,label=title)
-    nodes <- rbind(nodes,title_df)
+    title_df <- data.frame(xy="",x=width/2,y=50,shape="TITLE",color="black",fill="",fillstyle="",width=0,label=title)
+    rough_df <- rbind(rough_df,title_df)
   }
-  nodes$roughness <- roughness
-  nodes$bowing <- bowing
-  nodes$simplification <- simplification
+  rough_df$roughness <- roughness
+  rough_df$bowing <- bowing
+  rough_df$simplification <- simplification
 
   x <- list(
-    data=jsonlite::toJSON(nodes),
+    data=jsonlite::toJSON(rough_df),
     font=font,
+    title_font=title_font,
     id=chunk_name
   )
 
@@ -120,3 +132,5 @@ normalise <- function (x, from = range(x), to = c(0, 1))
   }
   x
 }
+
+#<a href="https://www.freepik.com/photos/background">Background photo created by aopsan - www.freepik.com</a>
