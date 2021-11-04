@@ -5,12 +5,13 @@
 \title{Create a rough map}
 \usage{
 roughsf(
-  object,
-  title = NULL,
+  layers,
   roughness = 1,
   bowing = 1,
   simplification = 1,
   font = "30px Arial",
+  title = NULL,
+  title_font = "30px Arial",
   width = NULL,
   height = NULL,
   elementId = NULL,
@@ -18,9 +19,7 @@ roughsf(
 )
 }
 \arguments{
-\item{object}{sf object}
-
-\item{title}{optional title of the map}
+\item{layers}{an sf object or a list of sf object. each object should only contain one type of geometry.}
 
 \item{roughness}{numeric vector for roughness of lines}
 
@@ -29,6 +28,8 @@ roughsf(
 \item{simplification}{simplify drawings (remove points from objects)}
 
 \item{font}{font size and font family for labels}
+
+\item{title}{optional title of the map}
 
 \item{width}{width}
 
@@ -42,18 +43,33 @@ roughsf(
 plot a sf map using rough.js
 }
 \details{
-the function recognizes the following attributes:
+the function recognizes the following attributes for POLYGONS:
 \itemize{
-\item \emph{fill} shape fill color
-\item \emph{color} shape stroke color
+\item \emph{fill} fill color
+\item \emph{color} stroke color
 \item \emph{stroke} stroke size
 \item \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
-\item \emph{label} label (not implemented yet)
+\item \emph{fillweight} thickness of fillstyle (between 0 and 1)
+}
+
+the function recognizes the following attributes for LINESTRINGS:
+\itemize{
+\item \emph{color} stroke color
+\item \emph{stroke} stroke size
+}
+
+the function recognizes the following attributes for POINTS:
+\itemize{
+\item \emph{color} color of point
+\item \emph{size} size of point
+\item \emph{label} label to be added (optional)
+\item \emph{label_pos} position of label relative to point: (c)enter, (n)orth, (e)ast, (s)outh, (w)est (optional)
 }
 
 Default values are used if one of the attributes is not found.
 
-The result of a roughnet call can be printed to file with \code{save_roughnet()}
-
+The result of a roughsf call can be printed to file with \code{save_roughsf()}
+}
+\references{
 More details on roughjs can be found on https://github.com/rough-stuff/rough/wiki
 }

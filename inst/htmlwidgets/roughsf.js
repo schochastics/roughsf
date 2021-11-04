@@ -6,22 +6,9 @@ function drawPoly(rc, s) {
      fill: s.fill,
      fillStyle: s.fillstyle,
      hachureGap: 4,
-     fillWeight: 0.5,
+     fillWeight: s.fillweight,
      stroke: s.color,
-     strokeWidth: s.width
-   });
-}
-
-function drawPoint(rc, s) {
-   rc.circle(Number(s.x), Number(s.y), Number(s.size), {
-     roughness: s.roughness,
-     bowing: s.bowing,
-     fill: s.fill,
-     fillStyle: s.fillstyle,
-     hachureGap: 4,
-     fillWeight: 0.5,
-     stroke: s.color,
-     strokeWidth: s.width
+     strokeWidth: s.size
    });
 }
 
@@ -30,15 +17,54 @@ function drawLine(rc, s) {
      roughness: s.roughness,
      bowing: s.bowing,
      stroke: s.color,
-     strokeWidth: s.width
+     strokeWidth: s.size
    });
 }
 
 function drawText(rc,ctx,s) {
-  ctx.fillStyle = s.color;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(s.label,Number(s.x), Number(s.y));
+  if(s.pos==="c"){
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(s.label,Number(s.x), Number(s.y));
+  }
+  if(s.pos==="n"){
+    ctx.textAlign = "center";
+    ctx.textBaseline = "bottom";
+    ctx.fillText(s.label,Number(s.x), Number(s.y)-0.5 * Number(s.size));
+  }
+  if(s.pos==="s"){
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    ctx.fillText(s.label,Number(s.x), Number(s.y)+0.5 * Number(s.size));
+  }
+  if(s.pos==="e"){
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillText(s.label,Number(s.x)+0.5 * Number(s.size), Number(s.y));
+  }
+    if(s.pos==="w"){
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillText(s.label,Number(s.x)-0.5 * Number(s.size), Number(s.y));
+  }
+}
+
+function drawPoint(rc,ctx, s) {
+   rc.circle(Number(s.x), Number(s.y), Number(s.size), {
+     roughness: s.roughness,
+     bowing: s.bowing,
+     fill: s.fill,
+     fillStyle: "solid",
+     hachureGap: 4,
+     fillWeight: 1,
+     stroke: s.color,
+     strokeWidth: 1
+   });
+
+   if(s.label!==""){
+    drawText(rc,ctx,s)
+   }
+
 }
 
 HTMLWidgets.widget({
@@ -76,7 +102,7 @@ HTMLWidgets.widget({
           }
 
           if(s.shape === "POINT"){
-            drawPoint(rc,s);
+            drawPoint(rc,ctx,s);
           }
 
           if(s.shape === "TEXT"){
