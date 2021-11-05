@@ -51,7 +51,7 @@ roughsf(
 plot a sf map using rough.js
 }
 \details{
-the function recognizes the following attributes for POLYGONS:
+The following attributes are supported for POLYGONS:
 \itemize{
 \item \emph{fill} fill color
 \item \emph{color} stroke color
@@ -60,13 +60,13 @@ the function recognizes the following attributes for POLYGONS:
 \item \emph{fillweight} thickness of fillstyle (between 0 and 1)
 }
 
-the function recognizes the following attributes for LINESTRINGS:
+The following attributes are supported for LINESTRINGS:
 \itemize{
 \item \emph{color} stroke color
 \item \emph{stroke} stroke size
 }
 
-the function recognizes the following attributes for POINTS:
+The following attributes are supported for POINTS:
 \itemize{
 \item \emph{color} color of point
 \item \emph{size} size of point

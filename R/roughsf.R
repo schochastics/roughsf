@@ -14,18 +14,18 @@
 #' @param elementId DOM id
 #' @param chunk_name markdown specific
 #' @details
-#' the function recognizes the following attributes for POLYGONS:
+#' The following attributes are supported for POLYGONS:
 #' * \emph{fill} fill color
 #' * \emph{color} stroke color
 #' * \emph{stroke} stroke size
 #' * \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
 #' * \emph{fillweight} thickness of fillstyle (between 0 and 1)
 #'
-#' the function recognizes the following attributes for LINESTRINGS:
+#' The following attributes are supported for LINESTRINGS:
 #' * \emph{color} stroke color
 #' * \emph{stroke} stroke size
 #'
-#' the function recognizes the following attributes for POINTS:
+#' The following attributes are supported for POINTS:
 #' * \emph{color} color of point
 #' * \emph{size} size of point
 #' * \emph{label} label to be added (optional)
