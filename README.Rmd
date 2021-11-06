@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# roughsf 
+# roughsf  <img src="man/figures/logo.png" align="right" width="120px"/>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/schochastics/roughsf/workflows/R-CMD-check/badge.svg)](https://github.com/schochastics/roughsf/actions)
