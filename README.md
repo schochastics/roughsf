@@ -85,10 +85,10 @@ cities$label <- cities$name
 cities$label_pos <- "e"
 
 roughsf::roughsf(list(ger, cities),
-  title = "Handdrawn Map of Germany", caption = "drawn by @schochastics",
-  title_font = "48px Pristina", font = "30px Pristina", caption_font = "30px Pristina",
-  roughness = 1, bowing = 1, simplification = 1,
-  width = 800, height = 1000, 
+                 title = "Sketchy Map of Germany", caption = "drawn by @schochastics",
+                 title_font = "48px Pristina", font = "30px Pristina", caption_font = "30px Pristina",
+                 roughness = 1, bowing = 1, simplification = 1,
+                 width = 800, height = 1000, 
 )
 ```
 
