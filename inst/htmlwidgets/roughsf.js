@@ -5,7 +5,8 @@ function drawPoly(rc, s) {
      simplification: s.simplification,
      fill: s.fill,
      fillStyle: s.fillstyle,
-     hachureGap: 4,
+     hachureAngle: s.hachureangle,
+     hachureGap: s.hachuregap,
      fillWeight: s.fillweight,
      stroke: s.color,
      strokeWidth: s.size

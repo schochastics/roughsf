@@ -20,6 +20,8 @@
 #' * \emph{stroke} stroke size
 #' * \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
 #' * \emph{fillweight} thickness of fillstyle (between 0 and 1)
+#' * \emph{hachureangle} angle of hachure lines
+#' * \emph{hachuregap} gap between two hachure lines
 #'
 #' The following attributes are supported for LINESTRINGS:
 #' * \emph{color} stroke color
@@ -93,13 +95,15 @@ roughsf <- function(layers,
 
   if(!is.null(title)){
     title_df <- data.frame(xy="",x=width/2,y=50,shape="TITLE",color="black",
-                           fill="",fillstyle="",size=NA,fillweight="",label=title,pos="c")
+                           fill="",fillstyle="", hachureangle = NA, hachuregap = NA,
+                           size=NA,fillweight="",label=title,pos="c")
     rough_df <- rbind(rough_df,title_df)
   }
 
   if(!is.null(caption)){
     caption_df <- data.frame(xy="",x=width/2,y=height*.95,shape="CAPTION",color="black",
-                           fill="",fillstyle="",size=NA,fillweight="",label=caption,pos="c")
+                           fill="",fillstyle="", hachureangle = NA, hachuregap = NA,
+                           size=NA,fillweight="",label=caption,pos="c")
     rough_df <- rbind(rough_df,caption_df)
   }
   rough_df$roughness <- roughness
@@ -154,6 +158,15 @@ prepare_polygon <- function(object,coords){
   if(!"fillweight" %in% names(object)){
     object[["fillweight"]] <- 0.5
   }
+
+  if(!"hachureangle" %in% names(object)){
+    object[["hachureangle"]] <- 41
+  }
+
+  if(!"hachuregap" %in% names(object)){
+    object[["hachuregap"]] <- 4*object[["stroke"]]
+  }
+
   nobj <- nrow(object)#max(coords[,4])
   mobj <- 4
   path_string <- rep("",nobj)
@@ -174,6 +187,8 @@ prepare_polygon <- function(object,coords){
     fillstyle = object[["fillstyle"]],
     size = object[["stroke"]],
     fillweight = object[["fillweight"]],
+    hachureangle = object[["hachureangle"]],
+    hachuregap = object[["hachuregap"]],
     label="",
     pos="")
 }
@@ -206,6 +221,8 @@ prepare_linestring <- function(object,coords){
     fillstyle = "",
     size = object[["stroke"]],
     fillweight = "",
+    hachureangle = NA,
+    hachuregap = NA,
     label="",
     pos="")
 }
@@ -237,6 +254,8 @@ prepare_points <- function(object,coords){
     fillstyle = "solid",
     size = object[["size"]],
     fillweight = "",
+    hachureangle = NA,
+    hachuregap = NA,
     label=object[["label"]],
     pos=object[["label_pos"]])
 }

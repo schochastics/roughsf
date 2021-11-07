@@ -58,6 +58,8 @@ The following attributes are supported for POLYGONS:
 \item \emph{stroke} stroke size
 \item \emph{fillstyle} one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
 \item \emph{fillweight} thickness of fillstyle (between 0 and 1)
+\item \emph{hachureangle} angle of hachure lines
+\item \emph{hachuregap} gap between two hachure lines
 }
 
 The following attributes are supported for LINESTRINGS:
