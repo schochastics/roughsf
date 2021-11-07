@@ -93,3 +93,7 @@ roughsf::roughsf(list(ger, cities),
 ```
 
 ![](man/figures/germany.png)
+
+# More Examples
+
+![](man/figures/africa.png)
