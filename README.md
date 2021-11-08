@@ -96,6 +96,8 @@ roughsf::roughsf(list(ger, cities),
 
 ![](man/figures/germany.png)
 
+Plots can be saved as png with the `save_roughsf()` function.
+
 # More Examples
 
 ![](man/figures/africa.png)
