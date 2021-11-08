@@ -48,6 +48,8 @@ The following attributes are supported for POLYGONS:
 * *stroke* stroke size
 * *fillstyle* one of "hachure", "solid", "zigzag", "cross-hatch", "dots", "dashed", "zigzag-line"
 * *fillweight* thickness of fillstyle (between 0 and 1)
+* *hachureangle* angle of hachure lines
+* *hachuregap* gap between two hachure lines
 
 The following attributes are supported for LINESTRINGS:
 
@@ -101,3 +103,5 @@ roughsf::roughsf(list(ger, cities),
 # More Examples
 
 ![](man/figures/africa.png)
+
+![](man/figures/pop_dens_ger.png)
