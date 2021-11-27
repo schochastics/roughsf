@@ -4,7 +4,7 @@
 \alias{save_roughsf}
 \title{Save roughsf plot to file}
 \usage{
-save_roughsf(rsf, file, background = "white")
+save_roughsf(rsf, file, background = "white", wait = 4)
 }
 \arguments{
 \item{rsf}{result from calling the function \code{roughsf}}
@@ -12,6 +12,8 @@ save_roughsf(rsf, file, background = "white")
 \item{file}{filename}
 
 \item{background}{string giving the html background color}
+
+\item{wait}{time in seconds to wait for page load}
 }
 \description{
 Save roughsf plot to file
