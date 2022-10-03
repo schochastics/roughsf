@@ -47,6 +47,9 @@ roughsf(
 
 \item{chunk_name}{markdown specific}
 }
+\value{
+htmlwidget containing the drawn network
+}
 \description{
 plot a sf map using rough.js
 }

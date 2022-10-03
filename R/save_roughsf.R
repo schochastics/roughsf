@@ -3,6 +3,7 @@
 #' @param file filename
 #' @param background string giving the html background color
 #' @param wait time in seconds to wait for page load
+#' @return No return value, called for side effect
 #' @export
 save_roughsf <- function(rsf,file,background = "white",wait = 4){
   if(!requireNamespace("pagedown", quietly = TRUE)){

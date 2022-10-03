@@ -13,6 +13,7 @@
 #' @param height height
 #' @param elementId DOM id
 #' @param chunk_name markdown specific
+#' @return htmlwidget containing the drawn network
 #' @details
 #' The following attributes are supported for POLYGONS:
 #' * \emph{fill} fill color

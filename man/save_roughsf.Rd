@@ -15,6 +15,9 @@ save_roughsf(rsf, file, background = "white", wait = 4)
 
 \item{wait}{time in seconds to wait for page load}
 }
+\value{
+No return value, called for side effect
+}
 \description{
 Save roughsf plot to file
 }

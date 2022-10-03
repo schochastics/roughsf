@@ -1,15 +1,17 @@
 Package: roughsf
-Title: Visualize sf objects using roughjs
+Title: Visualize spatial data using 'roughjs'
 Version: 1.0.0
 Authors@R: 
     person("David", "Schoch", , "david@schochastics.net", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2952-4812"))
-Description: Draw maps using the javascript library roughjs. This allows to draw sketchy, hand-drawn-like maps.
+Description: Draw maps using the 'javascript' library 'roughjs'. This allows to draw sketchy, hand-drawn-like maps.
+URL: https://github.com/schochastics/roughsf
+BugReports: https://github.com/schochastics/roughsf/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Imports: 
     htmlwidgets,
     jsonlite,
