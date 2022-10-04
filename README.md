@@ -20,6 +20,10 @@ general ggplot objects into sketchy drawings and
 
 ## Installation
 
+``` r
+install.packages("roughsf")
+```
+
 You can install the developers version of roughsf with:
 
 ``` r
