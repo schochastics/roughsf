@@ -83,6 +83,12 @@ Default values are used if one of the attributes is not found.
 
 The result of a roughsf call can be printed to file with \code{save_roughsf()}
 }
+\examples{
+library(sf)
+demo(nc, ask = FALSE, echo = FALSE)
+nc_poly <- st_cast(nc,"POLYGON",warn = FALSE)
+roughsf(nc_poly)
+}
 \references{
 More details on roughjs can be found on https://github.com/rough-stuff/rough/wiki
 }

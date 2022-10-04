@@ -1,5 +1,5 @@
 Package: roughsf
-Title: Visualize spatial data using 'roughjs'
+Title: Visualize Spatial Data using 'roughjs'
 Version: 1.0.0
 Authors@R: 
     person("David", "Schoch", , "david@schochastics.net", role = c("aut", "cre"),
