@@ -1,0 +1,11 @@
+url: https://schochastics.github.io/roughsf/
+template:
+  bootstrap: 5
+  template: sketchy
+navbar:
+  bg: none
+  type: light
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [github]
+
