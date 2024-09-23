@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/schochastics/roughsf/workflows/R-CMD-check/badge.svg)](https://github.com/schochastics/roughsf/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/roughsf)](https://CRAN.R-project.org/package=roughsf)
-[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/roughsf)](https://CRAN.R-project.org/package=roughsf)
+[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/roughsf)](https://CRAN.R-project.org/package=roughsf)
 <!-- badges: end -->
 
 Using the java script library [rough.js](https://roughjs.com/) to draw sketchy, hand-drawn-like maps  

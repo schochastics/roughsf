@@ -9,7 +9,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/roughsf)](https://CRAN.R-project.org/package=roughsf)
 [![CRAN
-Downloads](http://cranlogs.r-pkg.org/badges/roughsf)](https://CRAN.R-project.org/package=roughsf)
+Downloads](https://cranlogs.r-pkg.org/badges/roughsf)](https://CRAN.R-project.org/package=roughsf)
 <!-- badges: end -->
 
 Using the java script library [rough.js](https://roughjs.com/) to draw
@@ -42,27 +42,27 @@ explicitly as columns in the sf objects.
 
 The following attributes are supported for POLYGONS:
 
--   *fill* fill color
--   *color* stroke color
--   *stroke* stroke size
--   *fillstyle* one of “hachure”, “solid”, “zigzag”, “cross-hatch”,
-    “dots”, “dashed”, “zigzag-line”
--   *fillweight* thickness of fillstyle (between 0 and 1)
--   *hachureangle* angle of hachure lines
--   *hachuregap* gap between two hachure lines
+- *fill* fill color
+- *color* stroke color
+- *stroke* stroke size
+- *fillstyle* one of “hachure”, “solid”, “zigzag”, “cross-hatch”,
+  “dots”, “dashed”, “zigzag-line”
+- *fillweight* thickness of fillstyle (between 0 and 1)
+- *hachureangle* angle of hachure lines
+- *hachuregap* gap between two hachure lines
 
 The following attributes are supported for LINESTRINGS:
 
--   *color* stroke color
--   *stroke* stroke size
+- *color* stroke color
+- *stroke* stroke size
 
 The following attributes are supported for POINTS:
 
--   *color* color of point
--   *size* size of point
--   *label* label to be added (optional)
--   *label_pos* position of label relative to point: (c)enter, (n)orth,
-    (e)ast, (s)outh, (w)est (optional)
+- *color* color of point
+- *size* size of point
+- *label* label to be added (optional)
+- *label_pos* position of label relative to point: (c)enter, (n)orth,
+  (e)ast, (s)outh, (w)est (optional)
 
 Default values are used if one of the attributes is not found.
 
